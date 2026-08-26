@@ -6,6 +6,9 @@ import { FeaturedCampaign } from "../components/FeaturedCampaign";
 import { CreateCampaignModal } from "../components/CreateCampaignModal";
 import "../styles/Home.css";
 import { useNavigate } from "react-router-dom";
+import { Pagination } from "../components/Pagination";
+
+const PAGE_SIZE = 6;
 
 type Tab = "all" | "mine" | "contributions";
 type StatusFilter = "all" | "active" | "closed";
@@ -29,6 +32,7 @@ export function Home() {
   const [search, setSearch] = useState("");
 
   const navigate = useNavigate();
+  const [page, setPage] = useState(1);
 
 
   async function refreshAll() {
@@ -49,6 +53,7 @@ export function Home() {
   useEffect(() => {
     if (address) refreshAll();
   }, [address]);
+
 
   const myCampaigns = useMemo(
     () => campaigns.filter((c) => c.creator.toLowerCase() === address.toLowerCase()),
@@ -96,6 +101,25 @@ export function Home() {
 
     return result;
   }, [contributions, statusFilter, sortBy, search]);
+
+
+   // Pagination
+   useEffect(() => {
+    setPage(1);
+  }, [tab, statusFilter, sortBy, search]);
+  
+  const paginatedCampaigns = useMemo(
+    () => visibleCampaigns.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [visibleCampaigns, page]
+  );
+
+  const campaignTotalPages = Math.max(1, Math.ceil(visibleCampaigns.length / PAGE_SIZE));
+
+  const paginatedContributions = useMemo(
+    () => visibleContributions.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE),
+    [visibleContributions, page]
+  );
+  const contributionTotalPages = Math.max(1, Math.ceil(visibleContributions.length / PAGE_SIZE));
 
   return (
     <div className="home-page">
@@ -165,22 +189,28 @@ export function Home() {
         visibleContributions.length === 0 ? (
           <p className="loading-text">You haven't contributed to any campaigns yet.</p>
         ) : (
-          <div className="campaign-grid">
-            {visibleContributions.map((c) => (
-              <CampaignCard key={c.campaign.id} campaign={c.campaign} myContribution={c.myContribution} />
-            ))}
-          </div>
+          <>
+              <div className="campaign-grid">
+                {paginatedContributions.map((c) => (
+                  <CampaignCard key={c.campaign.id} campaign={c.campaign} myContribution={c.myContribution} />
+                ))}
+              </div>
+              <Pagination currentPage={page} totalPages={contributionTotalPages} onPageChange={setPage} />
+          </>
         )
       ) : visibleCampaigns.length === 0 ? (
         <p className="loading-text">
           {tab === "mine" ? "You haven't created any campaigns yet." : "No campaigns match your filters."}
         </p>
       ) : (
-        <div className="campaign-grid">
-          {visibleCampaigns.map((c) => (
-            <CampaignCard key={c.id} campaign={c} />
-          ))}
-        </div>
+        <>
+          <div className="campaign-grid">
+            {paginatedCampaigns.map((c) => (
+              <CampaignCard key={c.id} campaign={c} />
+            ))}
+          </div>
+          <Pagination currentPage={page} totalPages={campaignTotalPages} onPageChange={setPage} />
+        </>
       )}
 
       {showCreateModal && (

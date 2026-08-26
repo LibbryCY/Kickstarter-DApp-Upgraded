@@ -391,3 +391,28 @@
     background: var(--accent);
     color: white;
   }
+
+  .pagination {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  
+  .pagination button {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 8px 16px;
+    font-size: 13px;
+  }
+  
+  .pagination button:hover:not(:disabled) {
+    border-color: var(--accent);
+  }
+  
+  .pagination-info {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }

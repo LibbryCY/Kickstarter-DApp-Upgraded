@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { ethers, LogDescription } from "ethers";
 import { updateCampaignMetadata } from "../utils/apiCall";
+import toast from "react-hot-toast";
 
 interface Props {
   contract: ethers.Contract | null;
@@ -16,7 +17,7 @@ export function CreateCampaignModal({ contract, onClose, onCreated }: Props) {
   const [threshold, setThreshold] = useState("");
   const [beneficiary, setBeneficiary] = useState("");
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
 
   const [flexibleFunding, setFlexibleFunding] = useState(false);
 
@@ -24,22 +25,21 @@ export function CreateCampaignModal({ contract, onClose, onCreated }: Props) {
   async function handleSubmit() {
     if (!contract) return;
     if (!name.trim()) {
-      setError("Campaign name is required");
-      return;
+      return toast.error("Campaign name is required");
     }
     if (!ethers.isAddress(beneficiary)) {
-      setError("Invalid beneficiary address");
-      return;
+      return toast.error("Invalid beneficiary address");
     }
     if (!threshold || Number(threshold) <= 0) {
-      setError("Enter a valid ETH goal");
-      return;
+      return toast.error("Enter a valid ETH goal");
     }
 
     setBusy(true);
-    setError("");
+    const toastId = toast.loading("Confirm the transaction in your wallet...");
+
     try {
       const tx = await contract.createCampaign(ethers.parseEther(threshold), beneficiary, flexibleFunding);
+      toast.loading("Waiting for confirmation...", { id: toastId });
       const receipt = await tx.wait();
 
       // Pull the campaignId assigned on-chain from the emitted event
@@ -59,13 +59,15 @@ export function CreateCampaignModal({ contract, onClose, onCreated }: Props) {
         await updateCampaignMetadata(Number(campaignId), name.trim(), description.trim());
       }
 
+      toast.success("Campaign created!", { id: toastId });
+
       setTimeout(() => {
         onCreated();
         onClose();
       }, 1500);
     } catch (err) {
       console.error(err);
-      setError("Campaign creation failed");
+      toast.error("Campaign creation failed", { id: toastId });
       setBusy(false);
     }
   }
@@ -130,7 +132,6 @@ export function CreateCampaignModal({ contract, onClose, onCreated }: Props) {
           Flexible funding — release funds at 80%+ even if the goal isn't fully reached
         </label>
 
-        {error && <p className="card-error">{error}</p>}
 
         <div className="modal-actions">
           <button className="secondary-btn" onClick={onClose} disabled={busy}>

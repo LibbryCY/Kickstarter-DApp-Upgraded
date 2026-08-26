@@ -6,11 +6,22 @@ import { Home } from "./pages/Home";
 import { CampaignDetails } from "./pages/CampaignDetails";
 import { AdminRoute } from "./components/AdminRoute";
 import { Admin } from "./pages/Admin";
+import { Toaster } from "react-hot-toast";
 //import "./styles/App.css";
 
 function App() {
   return (
     <AuthProvider>
+      <Toaster
+        position="bottom-center"
+        toastOptions={{
+          style: {
+            background: "#1a1e2b",
+            color: "#f1f2f6",
+            border: "1px solid #2a2f3f",
+          },
+        }}
+      />
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Login />} />

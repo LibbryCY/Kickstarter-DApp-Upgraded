@@ -32,7 +32,7 @@ export function CampaignDetails() {
     loadCampaign();
   }, [id]);
 
-  const { vote, unvote, closeCampaign, refund, busy, error } = useCampaignActions(
+  const { vote, unvote, closeCampaign, refund, busy } = useCampaignActions(
     contract,
     Number(id),
     loadCampaign
@@ -156,7 +156,6 @@ export function CampaignDetails() {
         )}
 
 
-        {error && <p className="card-error">{error}</p>}
       </div>
     </div>
   );

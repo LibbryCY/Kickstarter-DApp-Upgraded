@@ -5,6 +5,7 @@ import { ethers } from "ethers";
 import { useAuth } from "../context/AuthContext";
 import { getAllCampaigns, getAllUsers, getStatistics } from "../utils/apiCall";
 import "../styles/Admin.css";
+import toast from "react-hot-toast";
 
 type AdminTab = "stats" | "campaigns" | "users";
 
@@ -18,7 +19,7 @@ export function Admin() {
   const [stats, setStats] = useState<any>(null);
   const [claimableWei, setClaimableWei] = useState<bigint>(0n);
   const [busy, setBusy] = useState(false);
-  const [error, setError] = useState("");
+  //const [error, setError] = useState("");
 
   async function loadAll() {
     const [campaignData, userData, statsData] = await Promise.all([
@@ -43,14 +44,18 @@ export function Admin() {
   async function handleClaimFunds() {
     if (!contract) return;
     setBusy(true);
-    setError("");
+    const toastId = toast.loading("Confirm the transaction in your wallet...");
+
     try {
       const tx = await contract.claimFunds();
       await tx.wait();
+      toast.success("Funds claimed!", { id: toastId });
+
       await loadAll();
     } catch (err: any) {
       console.error(err);
-      setError(err?.reason || err?.message || "Claim failed");
+      toast.error( "Claim failed", { id: toastId });
+
     } finally {
       setBusy(false);
     }
@@ -164,7 +169,6 @@ export function Admin() {
         </table>
       )}
 
-      {error && <p className="card-error">{error}</p>}
     </div>
   );
 }
