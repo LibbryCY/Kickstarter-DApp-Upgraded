@@ -1,0 +1,58 @@
+.login-page {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+  }
+  
+  .login-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    padding: 48px 40px;
+    max-width: 420px;
+    text-align: center;
+  }
+  
+  .login-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-size: 13px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 999px;
+    margin-bottom: 20px;
+  }
+  
+  .login-card h1 {
+    margin: 0 0 12px;
+    font-size: 28px;
+  }
+  
+  .login-card p {
+    color: var(--text-secondary);
+    margin-bottom: 32px;
+    line-height: 1.5;
+  }
+  
+  .connect-btn {
+    width: 100%;
+    padding: 14px;
+    font-size: 15px;
+    font-weight: 600;
+    background: var(--accent);
+    color: white;
+  }
+  
+  .connect-btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+  
+  .login-error {
+    color: var(--danger);
+    margin-top: 16px;
+    font-size: 14px;
+  }

@@ -1,0 +1,393 @@
+.home-page {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  .home-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid var(--border-color);
+    margin-bottom: 24px;
+  }
+  
+  .header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+  
+  .address-pill {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    padding: 8px 14px;
+    border-radius: 999px;
+    font-size: 13px;
+    font-weight: 600;
+  }
+  
+  .logout-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px 14px;
+  }
+  
+  .logout-btn:hover {
+    border-color: var(--danger);
+    color: var(--danger);
+  }
+  
+  .home-toolbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+  }
+  
+  .create-btn {
+    background: var(--accent);
+    color: white;
+    padding: 10px 18px;
+    font-weight: 600;
+  }
+  
+  .create-btn:hover:not(:disabled) {
+    background: var(--accent-hover);
+  }
+  
+  .loading-text {
+    color: var(--text-secondary);
+    text-align: center;
+    padding: 60px 0;
+  }
+  
+  .campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 20px;
+  }
+
+
+  .campaign-card {
+    cursor: pointer;
+    transition: transform 0.18s ease, border-color 0.18s ease, box-shadow 0.18s ease;
+  }
+  
+  .campaign-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+  
+  .campaign-title {
+    margin: 4px 0 0;
+    font-size: 17px;
+  }
+  
+  .campaign-snippet {
+    color: var(--text-secondary);
+    font-size: 13px;
+    margin: 0;
+    line-height: 1.4;
+  }
+  
+  .campaign-votes {
+    font-size: 12px;
+    color: var(--text-secondary);
+    margin: 0;
+  }
+  
+  .quick-amounts {
+    display: flex;
+    gap: 8px;
+    margin-top: 6px;
+  }
+  
+  .quick-amount-btn {
+    flex: 1;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    color: var(--text-secondary);
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .quick-amount-btn:hover {
+    border-color: var(--accent);
+    color: var(--text-primary);
+  }
+  
+  .quick-amount-active {
+    background: var(--accent-soft);
+    border-color: var(--accent);
+    color: var(--accent-hover);
+  }
+  
+  .modal-content textarea {
+    font-family: inherit;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    color: var(--text-primary);
+    padding: 10px 12px;
+    outline: none;
+    resize: vertical;
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: flex-start;
+    gap: 8px;
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 12px;
+  }
+  
+  .checkbox-label input {
+    margin-top: 2px;
+  }
+  
+  .campaign-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  
+  .campaign-card.closed {
+    opacity: 0.65;
+  }
+  
+  .campaign-card-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .campaign-id {
+    color: var(--text-secondary);
+    font-size: 13px;
+  }
+  
+  .status-badge {
+    font-size: 12px;
+    font-weight: 600;
+    padding: 4px 10px;
+    border-radius: 999px;
+  }
+  
+  .status-active {
+    background: rgba(61, 220, 151, 0.15);
+    color: var(--success);
+  }
+  
+  .status-closed {
+    background: rgba(255, 92, 124, 0.15);
+    color: var(--danger);
+  }
+  
+  .progress-bar-track {
+    background: var(--bg-secondary);
+    border-radius: 999px;
+    height: 8px;
+    overflow: hidden;
+  }
+  
+  .progress-bar-fill {
+    background: linear-gradient(90deg, var(--accent), var(--accent-hover));
+    height: 100%;
+    transition: width 0.3s ease;
+  }
+  
+  .campaign-numbers {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 6px;
+  }
+  
+  .campaign-numbers strong {
+    color: var(--text-primary);
+  }
+  
+  .campaign-meta p {
+    margin: 4px 0;
+    font-size: 13px;
+    color: var(--text-secondary);
+  }
+  
+  .campaign-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px;
+  }
+  
+  .campaign-action-buttons {
+    display: flex;
+    gap: 8px;
+  }
+  
+  .vote-btn {
+    flex: 1;
+    background: var(--success);
+    color: #0d0f14;
+    font-weight: 600;
+    padding: 10px;
+  }
+  
+  .unvote-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+  }
+  
+  .close-btn {
+    background: var(--danger);
+    color: white;
+    padding: 8px;
+    font-size: 13px;
+  }
+  
+  .card-error {
+    color: var(--danger);
+    font-size: 12px;
+    margin: 0;
+  }
+  
+  /* Modal */
+  .modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 100;
+  }
+  
+  .modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 28px;
+    width: 100%;
+    max-width: 400px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  
+  .modal-content h2 {
+    margin: 0 0 12px;
+  }
+  
+  .modal-content label {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin-top: 8px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+  
+  .secondary-btn {
+    flex: 1;
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: var(--text-primary);
+    padding: 10px;
+  }
+  
+  .modal-actions .create-btn {
+    flex: 1;
+  }
+
+
+
+  .filter-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+  }
+  
+  .search-input {
+    flex: 1;
+    min-width: 200px;
+  }
+  
+  .my-contribution-badge {
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 10px;
+    border-radius: 8px;
+    margin: auto 0 0;
+  }
+  
+  .featured-banner {
+    background: linear-gradient(135deg, var(--accent-soft), var(--bg-card));
+    border: 1px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition: transform 0.18s ease;
+  }
+  
+  .featured-banner:hover {
+    transform: translateY(-2px);
+  }
+  
+  .featured-label {
+    font-size: 12px;
+    font-weight: 700;
+    color: var(--accent-hover);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+  
+  .featured-banner h3 {
+    margin: 8px 0 12px;
+  }
+
+  .tabs {
+    display: flex;
+    gap: 4px;
+    background: var(--bg-secondary);
+    padding: 4px;
+    border-radius: 10px;
+    width: fit-content;
+  }
+  
+  .tab-btn {
+    background: transparent;
+    color: var(--text-secondary);
+    padding: 8px 16px;
+    font-size: 14px;
+    font-weight: 500;
+    border-radius: 8px;
+  }
+  
+  .tab-btn:hover {
+    color: var(--text-primary);
+  }
+  
+  .tab-active,
+  .tab-active:hover {
+    background: var(--accent);
+    color: white;
+  }

@@ -1,0 +1,113 @@
+.details-page {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  .back-btn {
+    background: transparent;
+    border: none;
+    color: var(--text-secondary);
+    padding: 0;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+  
+  .back-btn:hover {
+    color: var(--accent-hover);
+  }
+  
+  .details-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius);
+    padding: 32px;
+  }
+  
+  .details-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+  }
+  
+  .details-card h1 {
+    margin: 0 0 12px;
+  }
+  
+  .details-description {
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 24px;
+  }
+  
+  .details-stats {
+    margin-bottom: 20px;
+  }
+  
+  .details-meta p {
+    font-size: 13px;
+    color: var(--text-secondary);
+    margin: 4px 0;
+  }
+  
+  .details-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+    padding-top: 20px;
+    margin-top: 20px;
+  }
+  
+  .details-action-buttons {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .details-action-buttons .vote-btn,
+  .details-action-buttons .unvote-btn {
+    flex: 1;
+    padding: 12px;
+  }
+
+
+  .to-bold {
+    font-weight: bold;
+    color: azure;
+  }
+
+
+  .share-btn {
+    background: transparent;
+    border: 1px solid var(--border-color);
+    color: white;
+    padding: 8px 12px;
+    font-size: 13px;
+    flex: 1;
+  }
+  
+  .share-btn:hover {
+    border-color: var(--accent);
+    color: var(--accent-hover);
+  }
+  
+  .flexible-badge {
+    display: inline-block;
+    background: var(--accent-soft);
+    color: var(--accent-hover);
+    font-size: 12px;
+    padding: 4px 10px;
+    border-radius: 999px;
+    margin-bottom: 12px;
+  }
+  
+  .outcome-success {
+    color: var(--success);
+    font-weight: 500;
+  }
+  
+  .outcome-failed {
+    color: var(--text-secondary);
+    font-size: 14px;
+  }

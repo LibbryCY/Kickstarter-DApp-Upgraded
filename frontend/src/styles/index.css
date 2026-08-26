@@ -1,0 +1,68 @@
+:root {
+  --bg-primary: #0d0f14;
+  --bg-secondary: #151822;
+  --bg-card: #1a1e2b;
+  --border-color: #2a2f3f;
+  --accent: #7c5cff;
+  --accent-hover: #9277ff;
+  --accent-soft: rgba(124, 92, 255, 0.15);
+  --text-primary: #f1f2f6;
+  --text-secondary: #8b8fa3;
+  --success: #3ddc97;
+  --danger: #ff5c7c;
+  --radius: 14px;
+  --shadow: 0 8px 24px rgba(0, 0, 0, 0.35);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: radial-gradient(circle at top left, #1a1530, var(--bg-primary) 60%);
+  color: var(--text-primary);
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  min-height: 100vh;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  border: none;
+  border-radius: 10px;
+  transition: transform 0.15s ease, background 0.15s ease, opacity 0.15s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+input {
+  font-family: inherit;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 10px 12px;
+  outline: none;
+}
+
+select {
+  font-family: inherit;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  color: var(--text-primary);
+  padding: 10px 12px;
+  outline: none;
+}
+
+input:focus {
+  border-color: var(--accent);
+}
