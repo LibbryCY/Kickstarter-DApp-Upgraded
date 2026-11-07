@@ -28,12 +28,12 @@ A decentralized crowdfunding platform built on Ethereum. Campaigns, contribution
 ## Architecture
 
 ```
-┌─────────────┐        ┌──────────────────┐        ┌───────────────┐
-│   Frontend  │  RPC   │  Smart Contract   │ events │  Backend      │
-│   (React)   │◄──────►│   (Solidity)      │───────►│  (NestJS)     │
-└─────────────┘        └──────────────────┘        └───────┬───────┘
-       ▲                                                     │
-       │ REST API (campaigns, users, stats, auth)            ▼
+┌─────────────┐        ┌──────────────────┐         ┌───────────────┐
+│   Frontend  │  RPC   │  Smart Contract   │ events │   Backend     │
+│   (React)   │◄──────►│   (Solidity)      │───────►│   (NestJS)    │
+└─────────────┘        └──────────────────┘         └───────┬───────┘
+       ▲                                                    │
+       │ REST API (campaigns, users, stats, auth)           ▼
        └─────────────────────────────────────────────  MongoDB
 ```
 
